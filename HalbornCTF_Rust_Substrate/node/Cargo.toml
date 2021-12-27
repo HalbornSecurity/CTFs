@@ -1,0 +1,87 @@
+[package]
+authors = ["Malborn Inc"]
+build = "build.rs"
+edition = "2018"
+name = "malborn-chain"
+version = "2.0.12"
+
+[[bin]]
+name = "malborn-chain"
+path = "src/main.rs"
+
+[features]
+default = [ "cli" ]
+runtime-benchmarks = [
+	"malborn-chain-runtime/runtime-benchmarks",
+]
+cli = [
+	"malborn-chain-executor/wasmi-errno",
+]
+
+
+[package.metadata.wasm-pack.profile.release]
+# `wasm-opt` has some problems on linux, see
+# https://github.com/rustwasm/wasm-pack/issues/781 etc.
+wasm-opt = false
+
+[target.'cfg(target_arch="x86_64")'.dependencies]
+malborn-chain-executor = { path = "../executor", features = [ "wasmtime" ] }
+sc-cli = { version = "0.9.0", features = [ "wasmtime" ] }
+sc-service = { version = "0.9.0", default-features = false, features = [ "wasmtime" ] }
+sp-trie = { version = "3.0.0", default-features = false, features = ["memory-tracker"] }
+
+[dependencies]
+frame-benchmarking = { version = "3.1.0", default-features = false }
+frame-benchmarking-cli = { version = "3.0.0", default-features = false }
+futures = { version = "0.3.16", features = ["compat"] }
+jsonrpc-core = "15.1.0"
+malborn-chain-executor = { path = "../executor" }
+malborn-chain-primitives = { path = "../primitives" }
+malborn-chain-runtime = { path = "../runtime" }
+pallet-contracts = "3.0.0"
+pallet-contracts-rpc = "3.0.0"
+pallet-im-online = { version = "3.0.0", default-features = false }
+pallet-transaction-payment-rpc = "3.0.0"
+sc-authority-discovery = "0.9.0"
+sc-basic-authorship = "0.9.0"
+sc-cli = "0.9.0"
+sc-client-api = "3.0.0"
+sc-consensus = "0.9.0"
+sc-consensus-babe = "0.9.0"
+sc-consensus-babe-rpc = "0.9.0"
+sc-consensus-epochs = "0.9.0"
+sc-consensus-slots = "0.9.0"
+sc-finality-grandpa = "0.9.0"
+sc-finality-grandpa-rpc = "0.9.0"
+sc-finality-grandpa-warp-sync = "0.9.0"
+sc-network = "0.9.0"
+sc-rpc = "3.0.0"
+sc-rpc-api = "0.9.0"
+sc-service = "0.9.0"
+sc-telemetry = "3.0.0"
+sc-transaction-pool = "3.0.0"
+sp-api = "3.0.0"
+sp-authority-discovery = "3.0.0"
+serde_json = "1.0.66"
+sp-blockchain = "3.0.0"
+sp-block-builder = "3.0.0"
+sp-chain-spec = "3.0.0"
+sp-consensus = "0.9.0"
+sp-consensus-babe = "0.9.0"
+sp-core = "3.0.0"
+sp-finality-grandpa = "3.0.0"
+sp-inherents = "3.0.0"
+sp-keystore = "0.9.0"
+sp-runtime = "3.0.0"
+sp-transaction-pool = "3.0.0"
+structopt = "0.3.22"
+substrate-frame-rpc-system = "3.0.0"
+log = { version = "0.4.14", default-features = false }
+# sp-tracing = { version = "3.0.0", default-features = false }
+env_logger = "0.9.0"
+
+[build-dependencies]
+frame-benchmarking-cli = { version = "3.0.0", default-features = false }
+sc-cli = "0.9.0"
+structopt = "0.3.22"
+substrate-build-script-utils = "3.0.0"
