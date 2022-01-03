@@ -20,6 +20,10 @@ Halborn requests you to audit these smart contracts. Not only look at the code r
 
 ./HalbornCTF_Rust_Solana/
 
+## Terra CTF Based on COSMWASM
+
+./HalbornCTF_Rust_CosmWasm/dvamm/
+
 ## Substrate CTF Based on Rust
 
 ./HalbornCTF_Rust_Substrate
@@ -29,9 +33,5 @@ Halborn requests you to audit these smart contracts. Not only look at the code r
 ./HalbornCTF_Solidity_Ethereum
 
 ## Tendermint CTF Based on Golang
-
-Coming Soon...
-
-## Terra CTF Based on COSMWASM
 
 Coming Soon...
