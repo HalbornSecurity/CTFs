@@ -15,9 +15,6 @@ pub enum FarmError {
     #[error("InvalidProgramAddress")]
     InvalidProgramAddress,
 
-    #[error("WrongManager")]
-    WrongManager,
-
     #[error("SignatureMissing")]
     SignatureMissing,
 
@@ -33,7 +30,7 @@ pub enum FarmError {
     #[error("Wrong Farm Fee")]
     InvalidFarmFee,
 
-    #[error("Wrong creator")]
+    #[error("Wrong Creator")]
     WrongCreator,
 }
 impl From<FarmError> for ProgramError {
