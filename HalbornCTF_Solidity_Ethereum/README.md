@@ -1,1 +1,6 @@
-## This CTF has been removed. Interview Candidates please submit Reports for one of the other Contract/Programs in this Repository. (Solana/Substrate/COSMWASM/Tendermint)
+## Solidity EVM CTF
+
+Two CTFs are included here:
+
+- NFT Marketplace
+- Halborn Token
