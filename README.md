@@ -28,7 +28,7 @@ Halborn requests you to audit these smart contracts. Not only look at the code r
 
 ./HalbornCTF_Rust_Substrate
 
-## Solidity CTF for EVM (REMOVED)
+## Solidity CTF for EVM 
 
 ./HalbornCTF_Solidity_Ethereum
 
