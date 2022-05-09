@@ -1,0 +1,40 @@
+{
+  "name": "protocol",
+  "version": "1.0.0",
+  "description": "HalbornSolidityCTF1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roberto Reigada",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/HalbornSecurity/CTFs/tree/master/HalbornCTF_Solidity_Ethereum",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-ganache": "^2.0.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.4.7",
+    "hardhat": "^2.6.8",
+    "hardhat-gas-reporter": "^1.0.4",
+    "webpack": "4.44.2"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^0.1.9",
+    "@metamask/detect-provider": "^1.2.0",
+    "@nomiclabs/hardhat-etherscan": "^2.1.4",
+    "@openzeppelin/contracts": "^4.4.0-rc.1",
+    "@openzeppelin/hardhat-upgrades": "^1.9.0",
+    "csv": "^5.5.3",
+    "csv-parser": "^3.0.0",
+    "csv-reader": "^1.0.8",
+    "ethereumjs-wallet": "^1.0.1",
+    "hardhat-contract-sizer": "^2.0.3",
+    "hardhat-spdx-license-identifier": "^2.0.3",
+    "node-csv": "^0.1.2",
+    "prettier": "^2.3.2",
+    "web3": "^1.6.0",
+    "ya-csv": "^1.0.0"
+  }
+}
