@@ -1,0 +1,16 @@
+{
+  "type": "cosmos",
+  "value": {
+    "key": "{relayerAccount}",
+    "chain-id": "{chainID}",
+    "rpc-addr": "http://localhost:{rpcPort}",
+    "account-prefix": "{bech32Prefix}",
+    "keyring-backend": "{keyringBackend}",
+    "gas-adjustment": 1.2,
+    "gas-prices": "10{gasDenom}",
+    "debug": true,
+    "timeout": "{timeout}",
+    "output-format": "json",
+    "sign-mode": "direct"
+  }
+}
