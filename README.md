@@ -3,7 +3,7 @@
 
 ** Halborn Offensive Security Engineers that are applying for a full time position, please audit these contracts and provide us with a Security audit report.**
 
-There are 7 different Contracts/Programs based on different Protocols and Blockchains. Please audit/hack and create a Report on one of the following below to submit for your position with Halborn as an Offensive Security Engineer.
+There are 6 different Contracts/Programs based on different Protocols and Blockchains (NOT Blueteam CTF). Please audit/hack and create a Report on one of the following below to submit for your position with Halborn as an Offensive Security Engineer.
 
 Please include:
 
@@ -14,10 +14,6 @@ Findings Risk Description Code Section Recommendation on Improvement
 Halborn requests you to audit these smart contracts. Not only look at the code risks but also the economic aspects.
 
 # CTF List
-
-## Blueteam CTF
-
-./HalbornCTF_Blue_Team/
 
 ## Tendermint CTF Based on Golang
 
@@ -43,3 +39,8 @@ Halborn requests you to audit these smart contracts. Not only look at the code r
 
 ./HalbornCTF_Solidity_Ethereum
 
+# Additional CTFs (not qualifying for the hiring process)
+
+## Blueteam CTF
+
+./HalbornCTF_Blue_Team/
