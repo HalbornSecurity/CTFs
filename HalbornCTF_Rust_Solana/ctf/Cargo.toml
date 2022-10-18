@@ -1,29 +1,23 @@
 [package]
-name = "ctf-solana-farm"
+name = "solana-vulnerable-game"
 version = "0.1.0"
 authors = ["lowprivuser"]
-repository = "https://github.com/solana-labs/solana"
 license = "Apache-2.0"
-homepage = "https://solana.com/"
-edition = "2018"
+edition = "2021"
 
 [features]
 no-entrypoint = []
 test-bpf = []
 
 [dependencies]
-borsh = "0.9.1"
-borsh-derive = "0.9.1"
-solana-program = "1.7.8"
-num-derive = "0.3"
-num-traits = "0.2"
-thiserror = "1.0"
-spl-token = { version = "3.2.0", features = [ "no-entrypoint" ] }
+borsh = "0.9.3"
+solana-program = "1.10"
 
 [dev-dependencies]
-solana-program-test = "1.7.8"
-solana-sdk = "1.7.8"
+solana-test-framework = { git = "https://www.github.com/halbornteam/solana-test-framework", branch = "solana1.10" }
+solana-sdk = "1.10"
+async-trait = "0.1.52"
 
 [lib]
-name = "ctf_solana_farm"
+name = "solana_vulnerable_game"
 crate-type = ["cdylib", "lib"]
