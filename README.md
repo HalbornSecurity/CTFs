@@ -9,6 +9,8 @@ Please include:
 
 Findings Risk Description Code Section Recommendation on Improvement
 
+Only PDF formats will be accepted. Docx, txt ... formats will be automatically rejected.
+
 ## Request
 
 Halborn requests you to audit these smart contracts. Not only look at the code risks but also the economic aspects.
