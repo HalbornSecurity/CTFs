@@ -9,7 +9,7 @@ Please include:
 
 Findings Risk Description Code Section Recommendation on Improvement
 
-Only PDF formats will be accepted. Docx, txt ... formats will be automatically rejected.
+Only PDF format will be accepted. Docx, txt ... formats will be automatically rejected.
 
 ## Request
 
