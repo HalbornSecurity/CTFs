@@ -1,19 +1,17 @@
 ## Solidity EVM CTF
 
-Two CTFs are included here:
+There are 3 contracts in the `src`folder:
+- HalbornLoans.sol
+- HalbornNFT.sol
+- HalbornToken.sol
 
-- NFT Marketplace
-- Halborn Token
-
-Both CTFs contain multiple critical vulnerabilities that were found in live projects. 
-
-In order to apply for a Solidity position, **both challenges should be completed.**
+There are several vulnerabilities that were found in live projects. 
 
 **We do not want a report that is full of low/informational issues such as missing zero address checks or floating pragmas.
 We are looking for engineers who can fully understand the purpose of these contracts and can find all critical/high issues in them.**
 
-Most Halborn engineers use the Brownie IDE for manual testing. We would really value any critical/high finding that also have a Brownie script attached as a Proof of Concept to reproduce the issue.
+Most Halborn engineers use Foundry for manual testing. We would really value any critical/high finding that also have a Foundry test attached as a Proof of Concept to reproduce the issue. The Foundry project was already created.
 
-https://github.com/eth-brownie/brownie
+https://github.com/foundry-rs/foundry
 
-**Hint**: Each CTF contains at least 3 different critical issues.
+**Hint**: The CTF contracts (among all) contain at least 5 different critical issues.
