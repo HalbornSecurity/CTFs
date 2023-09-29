@@ -1,0 +1,24 @@
+[package]
+name = "ctf-solana-farm"
+version = "0.1.0"
+authors = ["lowprivuser"]
+repository = "https://github.com/solana-labs/solana"
+license = "Apache-2.0"
+homepage = "https://solana.com/"
+edition = "2018"
+
+[features]
+no-entrypoint = []
+test-bpf = []
+
+[dependencies]
+borsh = "0.10.3"
+solana-program = "~1.16"
+num-derive = "0.3"
+num-traits = "0.2"
+thiserror = "1.0"
+spl-token = { version = "3.5.0", features = [ "no-entrypoint" ] }
+
+[lib]
+name = "ctf_solana_farm"
+crate-type = ["cdylib", "lib"]
