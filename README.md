@@ -20,4 +20,6 @@ Halborn requests you to audit these smart contracts. Not only look at the code r
 
 ./HalbornCTF_Solidity_Ethereum
 
+## Solana CTF Based on Rust
 
+./HalbornCTF_Rust_Solana/
