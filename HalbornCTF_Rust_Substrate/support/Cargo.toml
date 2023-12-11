@@ -1,0 +1,5 @@
+[package]
+authors = ["Malborn Inc."]
+edition = "2018"
+name = "malborn-support"
+version = "2.0.12"

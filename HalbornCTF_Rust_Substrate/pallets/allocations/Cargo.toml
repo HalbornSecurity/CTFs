@@ -1,0 +1,42 @@
+[package]
+name = "pallet-allocations"
+version = "2.0.12"
+authors = ['Malborn.Inc']
+edition = "2018"
+description = "A pallet to handle the Proof Of Connectivity allocations rewards"
+
+[features]
+default = ["std"]
+std = [
+  "frame-support/std",
+  "frame-system/std",
+  "pallet-balances/std",
+  "pallet-pause/std",
+  "parity-scale-codec/std",
+  "serde",
+  "sp-io/std",
+  "sp-runtime/std",
+  "sp-std/std",
+]
+runtime-benchmarks = [
+  "frame-benchmarking",
+  "frame-system/runtime-benchmarks",
+  "frame-support/runtime-benchmarks",
+]
+
+[dependencies]
+frame-benchmarking = { version = "3.0.0", default-features = false, optional = true }
+frame-support = { version = "3.0.0", default-features = false }
+frame-system = { version = "3.0.0", default-features = false }
+malborn-support = { path = "../../support" }
+pallet-balances = { version = "3.0.0", default-features = false }
+pallet-pause = { default-features = false, path = "../pause" }
+parity-scale-codec = { version = "2.2.0", default-features = false, features = ["derive"] }
+serde = { version = "1.0.129", optional = true, features = ["derive"] }
+sp-io = { version = "3.0.0", default-features = false }
+sp-runtime = { version = "3.0.0", default-features = false }
+sp-std = { version = "3.0.0", default-features = false }
+
+
+[dev-dependencies]
+sp-core = { version = "3.0.0", default-features = false }
