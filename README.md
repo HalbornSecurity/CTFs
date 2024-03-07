@@ -27,3 +27,7 @@ Halborn requests you to audit these smart contracts. Not only look at the code r
 ## Substrate CTF Based on Rust
 
 ./HalbornCTF_Rust_Substrate/
+
+## Cosmos CTF Based on Golang
+
+./HalbornCTF_Golang_Cosmos/
