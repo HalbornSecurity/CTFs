@@ -1,0 +1,22 @@
+syntax = "proto3";
+package gaia.hal.v1beta1;
+
+option go_package = "github.com/USC-Developers/gaia/x/hal/types";
+option (gogoproto.goproto_getters_all) = false;
+
+import "gogoproto/gogo.proto";
+
+import "gaia/hal/v1beta1/hal.proto";
+
+// GenesisState defines the x/hal module genesis state.
+message GenesisState {
+  // params are all the module parameters.
+  Params params = 1 [
+    (gogoproto.nullable) = false
+  ];
+
+  // redeem_entries are active redeeming queue objects.
+  repeated RedeemEntry redeem_entries = 2 [
+    (gogoproto.nullable) = false
+  ];
+}
