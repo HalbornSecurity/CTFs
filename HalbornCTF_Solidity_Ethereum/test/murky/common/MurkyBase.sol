@@ -2,43 +2,42 @@
 pragma solidity ^0.8.4;
 
 abstract contract MurkyBase {
-    /***************
+    /**
+     *
      * CONSTRUCTOR *
-     ***************/
+     *
+     */
     constructor() {}
 
-    /********************
+    /**
+     *
      * VIRTUAL HASHING FUNCTIONS *
-     ********************/
-    function hashLeafPairs(
-        bytes32 left,
-        bytes32 right
-    ) public pure virtual returns (bytes32 _hash);
+     *
+     */
+    function hashLeafPairs(bytes32 left, bytes32 right) public pure virtual returns (bytes32 _hash);
 
-    /**********************
+    /**
+     *
      * PROOF VERIFICATION *
-     **********************/
-
-    function verifyProof(
-        bytes32 root,
-        bytes32[] memory proof,
-        bytes32 valueToProve
-    ) external pure returns (bool) {
+     *
+     */
+    function verifyProof(bytes32 root, bytes32[] memory proof, bytes32 valueToProve) external pure returns (bool) {
         // proof length must be less than max array size
         bytes32 rollingHash = valueToProve;
         uint256 length = proof.length;
         unchecked {
-            for (uint i = 0; i < length; ++i) {
+            for (uint256 i = 0; i < length; ++i) {
                 rollingHash = hashLeafPairs(rollingHash, proof[i]);
             }
         }
         return root == rollingHash;
     }
 
-    /********************
+    /**
+     *
      * PROOF GENERATION *
-     ********************/
-
+     *
+     */
     function getRoot(bytes32[] memory data) public pure returns (bytes32) {
         require(data.length > 1, "won't generate root for single leaf");
         while (data.length > 1) {
@@ -47,10 +46,7 @@ abstract contract MurkyBase {
         return data[0];
     }
 
-    function getProof(
-        bytes32[] memory data,
-        uint256 node
-    ) public pure returns (bytes32[] memory) {
+    function getProof(bytes32[] memory data, uint256 node) public pure returns (bytes32[] memory) {
         require(data.length > 1, "won't generate proof for single leaf");
         // The size of the proof is equal to the ceiling of log2(numLeaves)
         bytes32[] memory result = new bytes32[](log2ceilBitMagic(data.length));
@@ -78,9 +74,7 @@ abstract contract MurkyBase {
     }
 
     ///@dev function is private to prevent unsafe data from being passed
-    function hashLevel(
-        bytes32[] memory data
-    ) private pure returns (bytes32[] memory) {
+    function hashLevel(bytes32[] memory data) private pure returns (bytes32[] memory) {
         bytes32[] memory result;
 
         // Function is private, and all internal callers check that data.length >=2.
@@ -90,10 +84,7 @@ abstract contract MurkyBase {
             uint256 length = data.length;
             if (length & 0x1 == 1) {
                 result = new bytes32[](length / 2 + 1);
-                result[result.length - 1] = hashLeafPairs(
-                    data[length - 1],
-                    bytes32(0)
-                );
+                result[result.length - 1] = hashLeafPairs(data[length - 1], bytes32(0));
             } else {
                 result = new bytes32[](length / 2);
             }
@@ -107,14 +98,16 @@ abstract contract MurkyBase {
         return result;
     }
 
-    /******************
+    /**
+     *
      * MATH "LIBRARY" *
-     ******************/
+     *
+     */
 
     /// @dev  Note that x is assumed > 0
     function log2ceil(uint256 x) public pure returns (uint256) {
         uint256 ceil = 0;
-        uint pOf2;
+        uint256 pOf2;
         // If x is a power of 2, then this function will return a ceiling
         // that is 1 greater than the actual ceiling. So we need to check if
         // x is a power of 2, and subtract one from ceil if so.

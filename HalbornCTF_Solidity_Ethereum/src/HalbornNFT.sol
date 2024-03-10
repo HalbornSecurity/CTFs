@@ -5,25 +5,17 @@ import {ERC721Upgradeable} from "openzeppelin-contracts-upgradeable/contracts/to
 import {Initializable} from "openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol";
 import {UUPSUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol";
 import {OwnableUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
-import {MerkleProofUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/utils/cryptography/MerkleProofUpgradeable.sol";
+import {MerkleProofUpgradeable} from
+    "openzeppelin-contracts-upgradeable/contracts/utils/cryptography/MerkleProofUpgradeable.sol";
 import {MulticallUpgradeable} from "./libraries/Multicall.sol";
 
-contract HalbornNFT is
-    Initializable,
-    ERC721Upgradeable,
-    UUPSUpgradeable,
-    OwnableUpgradeable,
-    MulticallUpgradeable
-{
+contract HalbornNFT is Initializable, ERC721Upgradeable, UUPSUpgradeable, OwnableUpgradeable, MulticallUpgradeable {
     bytes32 public merkleRoot;
 
     uint256 public price;
     uint256 public idCounter;
 
-    function initialize(
-        bytes32 merkleRoot_,
-        uint256 price_
-    ) external initializer {
+    function initialize(bytes32 merkleRoot_, uint256 price_) external initializer {
         __ERC721_init("Halborn NFT", "HNFT");
         __UUPSUpgradeable_init();
         __Ownable_init();
@@ -43,14 +35,12 @@ contract HalbornNFT is
     }
 
     function mintAirdrops(uint256 id, bytes32[] calldata merkleProof) external {
-        require(_exists(id), "Token already minted");
+        // This line needs to be fixed...
+        // require(_exists(id), "Token already minted") // from this
+        require(!_exists(id), "Token already minted"); // to this
 
         bytes32 node = keccak256(abi.encodePacked(msg.sender, id));
-        bool isValidProof = MerkleProofUpgradeable.verifyCalldata(
-            merkleProof,
-            merkleRoot,
-            node
-        );
+        bool isValidProof = MerkleProofUpgradeable.verifyCalldata(merkleProof, merkleRoot, node);
         require(isValidProof, "Invalid proof.");
 
         _safeMint(msg.sender, id, "");
