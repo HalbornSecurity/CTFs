@@ -15,7 +15,7 @@ func AddTestAddrs(app *gaiaapp.GaiaApp, ctx sdk.Context, accNum int, accCoins sd
 	return addTestAddrs(app, ctx, accNum, accCoins, createRandomAccounts)
 }
 
-// createRandomAccounts is a strategy used by addTestAddrs() in order to generated addresses in random order.
+// createRandomAccounts is a strategy used by addTestAddrs() in order to generate addresses in random order.
 func createRandomAccounts(accNum int) []sdk.AccAddress {
 	testAddrs := make([]sdk.AccAddress, accNum)
 	for i := 0; i < accNum; i++ {
