@@ -1,0 +1,27 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "npm run build-env && npm run build-app",
+    "build-app": "bash build_app.sh",
+    "build-env": "bash build_env.sh",
+    "build-artifacts": "bash build_artifacts.sh",
+    "reset-localterra": "bash reset_env.sh"
+  },
+  "dependencies": {
+    "@terra-money/feather.js": "2.0.2",
+    "bignumber.js": "^9.1.2",
+    "dotenv": "^16.4.5",
+    "ts-custom-error": "^3.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "description": "### Build env local",
+  "author": ""
+}

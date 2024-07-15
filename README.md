@@ -31,3 +31,11 @@ Halborn requests you to audit these smart contracts. Not only look at the code r
 ## Cosmos CTF Based on Golang
 
 ./HalbornCTF_Golang_Cosmos/
+
+## CosmWasm CTF Based on Rust
+
+./HalbornCTF_Rust_CosmWasm/
+
+## NEAR CTF Based on Rust
+
+./HalbornCTF_Rust_NEAR/

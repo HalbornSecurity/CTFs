@@ -1,0 +1,24 @@
+[package]
+name = "dvamm-factory"
+version = "2.0.0"
+authors = ["Luis Quispe Gonzales", "Elena Maranon"]
+edition = "2021"
+description = "DVAMM factory contract - auto pair contract generator and also directory for all pairs"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+dvamm = { path = "../../packages/dvamm", default-features = false, version = "3.0.0"}
+cosmwasm-std = { version = "2.0.4", features = ["iterator"] }
+cw-storage-plus = {version = "2.0.0", features = ['iterator']}
+cw2 = "2.0.0"
+schemars = "0.8.21"
+serde = { version = "1.0.203", default-features = false, features = ["derive"] }
+thiserror = { version = "1.0.61" }
+protobuf = { version ="3.5.0", features = ["with-bytes"] }
+
+[dev-dependencies]
+cosmwasm-schema = "2.0.4"
+dvamm-pair = {path = "../pair"}

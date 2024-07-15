@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Cw20HookMsg",
+  "oneOf": [
+    {
+      "description": "Sell a given amount of asset",
+      "type": "object",
+      "required": [
+        "swap"
+      ],
+      "properties": {
+        "swap": {
+          "type": "object",
+          "properties": {
+            "to": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "withdraw_liquidity"
+      ],
+      "properties": {
+        "withdraw_liquidity": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}
