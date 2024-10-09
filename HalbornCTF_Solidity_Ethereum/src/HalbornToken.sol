@@ -7,13 +7,7 @@ import {UUPSUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/prox
 import {OwnableUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
 import {MulticallUpgradeable} from "./libraries/Multicall.sol";
 
-contract HalbornToken is
-    Initializable,
-    ERC20Upgradeable,
-    UUPSUpgradeable,
-    OwnableUpgradeable,
-    MulticallUpgradeable
-{
+contract HalbornToken is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgradeable, MulticallUpgradeable {
     address public halbornLoans;
 
     modifier onlyLoans() {
