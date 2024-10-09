@@ -1,0 +1,7 @@
+[project]
+authors = ["Halborn"]
+entry = "main.sw"
+license = "Apache-2.0"
+name = "SimpleLiquidityPool"
+
+[dependencies]

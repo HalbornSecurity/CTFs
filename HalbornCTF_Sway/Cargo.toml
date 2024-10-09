@@ -1,0 +1,17 @@
+[package]
+name = "SimpleLiquidityPool"
+description = "A cargo-generate template for Rust + Sway integration testing."
+version = "0.1.0"
+edition = "2021"
+authors = ["Lilian Cariou <liliancariou@gmail.com>"]
+license = "Apache-2.0"
+
+[dev-dependencies]
+fuels = "0.66.1"
+tokio = { version = "1.12", features = ["rt", "macros"] }
+sha2 = "0.10.6"
+
+[[test]]
+harness = true
+name = "integration_tests"
+path = "tests/harness.rs"
