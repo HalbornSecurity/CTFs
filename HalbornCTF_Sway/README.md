@@ -1,3 +1,5 @@
+## Sway CTF
+
 # SimpleLiquidityPool CTF Challenge
 
 Welcome to the **SimpleLiquidityPool** CTF challenge! Your task is to analyze and exploit a smart contract to drain its funds using the provided test environment.
