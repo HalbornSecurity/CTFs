@@ -1,0 +1,12 @@
+syntax = "proto3";
+package halbornctf.hal;
+
+option go_package = "HalbornCTF/x/hal/types";
+
+message Ticket {
+  
+  string author = 1; 
+  string issue = 2; 
+  uint64 id = 3; 
+  string additionalInfo = 4;
+}

@@ -1,0 +1,60 @@
+syntax = "proto3";
+package halbornctf.hal;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "google/protobuf/duration.proto";
+
+option go_package = "HalbornCTF/x/hal/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "halbornctf/x/hal/Params";
+  option (gogoproto.equal) = true;
+
+  // redeem_dur defines HAL -> collateral redeem duration (how long does it takes to convert).
+  google.protobuf.Duration redeem_dur = 1 [
+    (gogoproto.moretags) = "yaml:\"redeem_dur\"",
+    (gogoproto.nullable) = false,
+    (gogoproto.stdduration) = true
+  ];
+
+  // max_redeem_entries is a max number of concurrent redeem operations per account.
+  int32 max_redeem_entries = 2 [
+    (gogoproto.moretags) = "yaml:\"max_redeem_entries\""
+  ];
+
+  // collateral_metas defines a set of collateral token metas that are supported by the module.
+  TokenMeta collateral_metas = 3 [
+    (gogoproto.moretags) = "yaml:\"collateral_metas\"",
+    (gogoproto.nullable) = false
+  ];
+
+  // hal_meta defines the HAL token meta.
+  // HAL token must has a higher precision (number of decimals) than other collaterals.
+  TokenMeta hal_meta = 4 [
+    (gogoproto.moretags) = "yaml:\"hal_meta\"",
+    (gogoproto.nullable) = false
+  ];
+}
+
+// TokenMeta defines HAL / collateral token metadata.
+message TokenMeta {
+  option (gogoproto.equal) = true;
+
+  // denom is the sdk.Coin denomination (ibc / native tokens).
+  string denom = 1 [
+    (gogoproto.moretags) = "yaml:\"denom\""
+  ];
+
+  // decimals is a number of decimals for the sdk.Coin amount value.
+  // Example: coin amount of 1.0usdt with 3 decimals -> 1000.
+  uint32 decimals = 2 [
+    (gogoproto.moretags) = "yaml:\"decimals\""
+  ];
+
+  // description is an optional token description (IBC source info for example).
+  string description = 3 [
+    (gogoproto.moretags) = "yaml:\"description\""
+  ];
+}

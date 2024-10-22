@@ -1,0 +1,17 @@
+syntax = "proto3";
+package halbornctf.hal;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "halbornctf/hal/params.proto";
+
+option go_package = "HalbornCTF/x/hal/types";
+
+// GenesisState defines the hal module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

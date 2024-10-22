@@ -1,4 +1,4 @@
-package gaia
+package app
 
 import (
 	"errors"
@@ -7,11 +7,11 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 )
 
-var _ authtypes.GenesisAccount = (*SimGenesisAccount)(nil)
+var _ authtypes.GenesisAccount = (*GenesisAccount)(nil)
 
-// SimGenesisAccount defines a type that implements the GenesisAccount interface
+// GenesisAccount defines a type that implements the GenesisAccount interface
 // to be used for simulation accounts in the genesis state.
-type SimGenesisAccount struct {
+type GenesisAccount struct {
 	*authtypes.BaseAccount
 
 	// vesting account fields
@@ -27,7 +27,7 @@ type SimGenesisAccount struct {
 }
 
 // Validate checks for errors on the vesting and module account parameters
-func (sga SimGenesisAccount) Validate() error {
+func (sga GenesisAccount) Validate() error {
 	if !sga.OriginalVesting.IsZero() {
 		if sga.StartTime >= sga.EndTime {
 			return errors.New("vesting start-time cannot be before end-time")

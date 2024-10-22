@@ -1,21 +1,22 @@
 package types
 
-import (
-	"fmt"
-)
+// this line is used by starport scaffolding # genesis/types/import
 
-// DefaultGenesisState returns GenesisState with defaults.
-func DefaultGenesisState() *GenesisState {
+// DefaultIndex is the default global index
+const DefaultIndex uint64 = 1
+
+// DefaultGenesis returns the default genesis state
+func DefaultGenesis() *GenesisState {
 	return &GenesisState{
-		Params:        DefaultParams(),
+		// this line is used by starport scaffolding # genesis/types/default
+		Params: DefaultParams(),
 	}
 }
 
-// Validate perform a GenesisState object validation.
-func (s GenesisState) Validate() error {
-	if err := s.Params.Validate(); err != nil {
-		return fmt.Errorf("params: %w", err)
-	}
+// Validate performs basic genesis state validation returning an error upon any
+// failure.
+func (gs GenesisState) Validate() error {
+	// this line is used by starport scaffolding # genesis/types/validate
 
-	return nil
+	return gs.Params.Validate()
 }

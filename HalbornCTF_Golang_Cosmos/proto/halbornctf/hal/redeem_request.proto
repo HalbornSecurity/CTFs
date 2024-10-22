@@ -1,0 +1,14 @@
+syntax = "proto3";
+package halbornctf.hal;
+
+option go_package = "HalbornCTF/x/hal/types";
+import "gogoproto/gogo.proto"; 
+import "cosmos/base/v1beta1/coin.proto"; 
+import "google/protobuf/timestamp.proto";
+
+message RedeemRequest {
+  
+  string account = 1; 
+  cosmos.base.v1beta1.Coin collateral = 2 [(gogoproto.nullable) = false]; 
+  google.protobuf.Timestamp completiontime = 3 [(gogoproto.moretags) = "yaml:\"completion_time\"", (gogoproto.nullable) = false, (gogoproto.stdtime) = true];
+}

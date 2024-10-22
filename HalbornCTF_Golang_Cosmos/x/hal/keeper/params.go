@@ -1,73 +1,33 @@
 package keeper
 
 import (
-	"time"
+	"context"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/gaia/v7/x/hal/types"
+	"github.com/cosmos/cosmos-sdk/runtime"
+
+	"HalbornCTF/x/hal/types"
 )
 
-// RedeemDur returns HAL -> collateral coins redeem timeout duration.
-func (k Keeper) RedeemDur(ctx sdk.Context) (res time.Duration) {
-	k.paramStore.Get(ctx, types.ParamsKeyRedeemDur, &res)
-	return
-}
-
-// MaxRedeemEntries returns the max number of redeem entries per account.
-func (k Keeper) MaxRedeemEntries(ctx sdk.Context) (res uint32) {
-	k.paramStore.Get(ctx, types.ParamsKeyMaxRedeemEntries, &res)
-	return
-}
-
-// CollateralMetas returns supported collateral token metas.
-func (k Keeper) CollateralMetas(ctx sdk.Context) (res []types.TokenMeta) {
-	k.paramStore.Get(ctx, types.ParamsKeyCollateralMetas, &res)
-	return
-}
-
-// BaseMeta returns meta with the minimum decimals amount (to normalize coins).
-func (k Keeper) BaseMeta(ctx sdk.Context) types.TokenMeta {
-	halMeta := k.HALMeta(ctx)
-	minMeta := halMeta
-
-	for _, meta := range k.CollateralMetas(ctx) {
-		if meta.Decimals > minMeta.Decimals {
-			minMeta = meta
-		}
+// GetParams get all parameters as types.Params
+func (k Keeper) GetParams(ctx context.Context) (params types.Params) {
+	store := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
+	bz := store.Get(types.ParamsKey)
+	if bz == nil {
+		return params
 	}
 
-	return minMeta
+	k.cdc.MustUnmarshal(bz, &params)
+	return params
 }
 
-// CollateralMetasSet returns supported collateral token metas set (key: denom).
-func (k Keeper) CollateralMetasSet(ctx sdk.Context) map[string]types.TokenMeta {
-	metas := k.CollateralMetas(ctx)
-
-	set := make(map[string]types.TokenMeta, len(metas))
-	for _, meta := range metas {
-		set[meta.Denom] = meta
+// SetParams set the params
+func (k Keeper) SetParams(ctx context.Context, params types.Params) error {
+	store := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
+	bz, err := k.cdc.Marshal(&params)
+	if err != nil {
+		return err
 	}
+	store.Set(types.ParamsKey, bz)
 
-	return set
-}
-
-// HALMeta returns the HAL token meta.
-func (k Keeper) HALMeta(ctx sdk.Context) (res types.TokenMeta) {
-	k.paramStore.Get(ctx, types.ParamsKeyHALMeta, &res)
-	return
-}
-
-// GetParams returns all module parameters.
-func (k Keeper) GetParams(ctx sdk.Context) types.Params {
-	return types.NewParams(
-		k.RedeemDur(ctx),
-		k.MaxRedeemEntries(ctx),
-		k.CollateralMetas(ctx),
-		k.HALMeta(ctx),
-	)
-}
-
-// SetParams sets all module parameters.
-func (k Keeper) SetParams(ctx sdk.Context, params types.Params) {
-	k.paramStore.SetParamSet(ctx, &params)
+	return nil
 }
