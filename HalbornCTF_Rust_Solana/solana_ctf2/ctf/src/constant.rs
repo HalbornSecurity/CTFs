@@ -1,1 +1,0 @@
-pub const FARM_FEE:u64 = 5000;

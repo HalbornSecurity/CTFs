@@ -1,0 +1,23 @@
+[package]
+name = "solana-vulnerable-game"
+version = "0.1.0"
+authors = ["lowprivuser"]
+license = "Apache-2.0"
+edition = "2021"
+
+[features]
+no-entrypoint = []
+test-bpf = []
+
+[dependencies]
+borsh = "0.10.3"
+solana-program = "~1.16"
+
+[dev-dependencies]
+solana-test-framework = { git = "https://www.github.com/halbornteam/solana-test-framework", branch = "solana1.16" }
+solana-sdk = "~1.16"
+async-trait = "0.1.52"
+
+[lib]
+name = "solana_vulnerable_game"
+crate-type = ["cdylib", "lib"]
