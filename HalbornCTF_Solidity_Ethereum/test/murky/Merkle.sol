@@ -7,15 +7,14 @@ import "./common/MurkyBase.sol";
 /// @author dmfxyz
 /// @dev Note Generic Merkle Tree
 contract Merkle is MurkyBase {
-    /********************
+    /**
+     *
      * HASHING FUNCTION *
-     ********************/
+     *
+     */
 
     /// ascending sort and concat prior to hashing
-    function hashLeafPairs(
-        bytes32 left,
-        bytes32 right
-    ) public pure override returns (bytes32 _hash) {
+    function hashLeafPairs(bytes32 left, bytes32 right) public pure override returns (bytes32 _hash) {
         assembly {
             switch lt(left, right)
             case 0 {
