@@ -1,4 +1,0 @@
-cargo:rerun-if-changed=build.rs
-cargo:rerun-if-env-changed=RUST_LIBC_UNSTABLE_FREEBSD_VERSION
-cargo:rustc-cfg=freebsd11
-cargo:rustc-cfg=libc_const_extern_fn
